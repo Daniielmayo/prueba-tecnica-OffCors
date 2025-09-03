@@ -5,53 +5,53 @@ import type { User } from "../../shared/types/usert";
 import styles from "./Users.module.css";
 import Input from "../../shared/components/Input";
 import Text from "../../shared/components/Text";
-import Button from "../../shared/components/Button";
+import SkeletonCard from "../../shared/components/SkeletonCard";
 
 export const Users = () => {
-  const [user, setUser] = useState<User[]>();
+  const [allUsers, setAllUsers] = useState<User[]>([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
 
-  console.log(search);
   useEffect(() => {
     const fecthUsers = async () => {
       setLoading(true);
       const data = await UsersFetch();
-      setUser(data);
+      setAllUsers(data || []);
       setLoading(false);
     };
     fecthUsers();
   }, []);
 
+  const filteredUsers = allUsers.filter((user) =>
+    user.name.toLowerCase().includes(search.toLowerCase())
+  );
+
   return (
     <main className={styles.container}>
-      {/* <section> */}
-        <Text variant="title">Usuarios</Text>
-        <div className={styles.containerSearch}>
-          <Input
-            value={search}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              setSearch(e.target.value);
-            }}
-            placeholder={"Buscar usuario por nombre"}
-          />
-          <Button>Buscar</Button>
-        </div>
-      {/* </section> */}
-      {loading ? (
-        <h1>Cargando...</h1>
-      ) : (
-        <section className={styles.containerCards}>
-          {user?.map((user) => (
-            <UserCard
-              key={user.id}
-              name={user.name}
-              mail={user.email}
-              city={user.address.city}
-            />
-          ))}
-        </section>
-      )}
+      <Text variant="title">Usuarios</Text>
+      <div className={styles.containerSearch}>
+        <Input
+          value={search}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setSearch(e.target.value);
+          }}
+          placeholder={"Buscar usuario por nombre"}
+        />
+      </div>
+      <section className={styles.containerCards}>
+        {loading
+          ? Array.from({ length: 8 }).map((_, index) => (
+              <SkeletonCard key={index} />
+            ))
+          : filteredUsers.map((user) => (
+              <UserCard
+                key={user.id}
+                name={user.name}
+                mail={user.email}
+                city={user.address.city}
+              />
+            ))}
+      </section>
     </main>
   );
 };

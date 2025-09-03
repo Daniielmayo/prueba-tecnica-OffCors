@@ -25,13 +25,7 @@ export const Users = () => {
         <Text variant="title"> Usuarios</Text>
       </div>
       <UserSearch search={search} onSearchChange={setSearch} />
-      <section
-        className={
-          filteredUsers.length === 0 ? styles.hidden : styles.containerCards
-        }
-      >
-        {renderContent()}
-      </section>
+      <section className={styles.containerCards}>{renderContent()}</section>
     </main>
   );
 };

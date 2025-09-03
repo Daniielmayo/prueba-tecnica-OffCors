@@ -1,0 +1,25 @@
+.card {
+  background-color: var(--color-white);
+  border-radius: 0.8rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border);
+  max-width: 400px;
+  width: 100%;
+  margin: 1rem auto;
+  transition: transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  border-color: var(--primaryYellow);
+}
+
+.contentText {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

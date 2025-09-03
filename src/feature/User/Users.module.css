@@ -22,3 +22,7 @@
   gap: 0.4rem;
   width: 100%;
 }
+
+.hidden {
+  display: flex;
+}

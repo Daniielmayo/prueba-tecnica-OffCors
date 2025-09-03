@@ -1,69 +1,85 @@
-# React + TypeScript + Vite
+# Prueba Técnica Offcorss - Lista de Usuarios
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una aplicación web desarrollada como parte de una prueba técnica. La aplicación muestra una lista de usuarios, permite buscarlos por nombre y presenta una interfaz de usuario limpia y responsiva.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   Visualización de una lista de usuarios obtenida desde una API.
+-   Búsqueda de usuarios en tiempo real por nombre.
+-   Indicador de estado de carga (skeleton screens) mientras se obtienen los datos.
+-   Mensaje amigable cuando no se encuentran usuarios.
+-   Diseño modular y componentes reutilizables.
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologías Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-   **React:** Biblioteca para construir interfaces de usuario.
+-   **TypeScript:** Superset de JavaScript que añade tipado estático.
+-   **Vite:** Herramienta de desarrollo frontend moderna y rápida.
+-   **Axios:** Cliente HTTP para realizar peticiones a la API.
+-   **React Icons:** Librería para incluir iconos fácilmente.
+-   **CSS Modules:** Para estilos encapsulados por componente.
+-   **ESLint:** Para el análisis de código estático y mantenimiento de la calidad.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📂 Estructura del Proyecto
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+El proyecto sigue una estructura orientada a funcionalidades (`feature-driven`) para mantener el código organizado y escalable.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Filosofía de la Estructura
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+-   **`feature`**: Cada funcionalidad principal (como `User`) tiene su propia carpeta, conteniendo todo lo necesario para que funcione: componentes, hooks y estilos. Esto hace que el código sea más fácil de encontrar, mantener y escalar.
+-   **`shared`**: Contiene código que no es específico de una funcionalidad y puede ser reutilizado en cualquier parte de la aplicación, como componentes de UI genéricos (`Button`, `Input`), servicios (`axiosInstance`) o tipos de datos comunes.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🚀 Cómo Empezar
+
+Sigue estos pasos para levantar el proyecto en tu entorno local.
+
+### Prerrequisitos
+
+-   [Node.js](https://nodejs.org/) (versión 18 o superior recomendada)
+-   [Yarn](https://yarnpkg.com/) o npm (incluido con Node.js)
+
+### Instalación
+
+1.  Clona el repositorio:
+    ```bash
+    git clone <URL_DEL_REPOSITORIO>
+    cd pruebaTecnicaOffCors
+    ```
+
+2.  Crea un archivo `.env` a partir del template `.env.template` y añade las variables de entorno necesarias. Para este proyecto, la URL de la API de usuarios es necesaria:
+    ```
+    VITE_API_URL=https://jsonplaceholder.typicode.com
+    ```
+
+3.  Instala las dependencias del proyecto:
+    ```bash
+    npm install
+    # o si usas yarn
+    yarn install
+    ```
+
+### Ejecución
+
+1.  Para iniciar el servidor de desarrollo:
+    ```bash
+    npm run dev
+    # o
+    yarn dev
+    ```
+    La aplicación estará disponible en `http://localhost:5173` (o el puerto que Vite asigne).
+
+2.  Para construir la aplicación para producción:
+    ```bash
+    npm run build
+    # o
+    yarn build
+    ```
+    Los archivos optimizados se generarán en la carpeta `dist/`.
+
+## 📜 Scripts Disponibles
+
+-   `npm run dev`: Inicia el servidor de desarrollo con Vite.
+-   `npm run build`: Compila el proyecto para producción.
+-   `npm run lint`: Ejecuta ESLint para analizar el código en busca de errores y problemas de estilo.
+-   `npm run preview`: Sirve localmente el build de producción para previsualización.

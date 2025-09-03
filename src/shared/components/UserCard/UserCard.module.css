@@ -4,7 +4,7 @@
   padding: 1.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--color-border);
-  max-width: 400px;
+  max-width: 25rem;
   width: 100%;
   margin: 1rem auto;
   transition: transform var(--transition-fast),

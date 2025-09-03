@@ -21,9 +21,15 @@ export const Users = () => {
 
   return (
     <main className={styles.container}>
-      <Text variant="title">Usuarios</Text>
+      <div className={styles.containerTitle}>
+        <Text variant="title"> Usuarios</Text>
+      </div>
       <UserSearch search={search} onSearchChange={setSearch} />
-      <section className={filteredUsers.length === 0 ? styles.hidden : styles.containerCards}>
+      <section
+        className={
+          filteredUsers.length === 0 ? styles.hidden : styles.containerCards
+        }
+      >
         {renderContent()}
       </section>
     </main>
